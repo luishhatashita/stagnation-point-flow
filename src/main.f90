@@ -4,5 +4,4 @@ program main
     real :: x = 2.0, f_x
 
     call func(x, f_x)
-    
 end program main

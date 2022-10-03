@@ -1,11 +1,12 @@
 module func_mod 
-    ! The purpose of this module is to contain the function which will be
+    ! The purpose of this module first is to contain the function which will be
     ! solved with the bisection method.
+    ! Secondly, the ODE set up will also be placed here.
     
     implicit none
-    real, private :: a
+    private
 
-    public :: func 
+    public :: func, first_ODE 
 
     contains
 
@@ -25,5 +26,22 @@ module func_mod
             print *, "f(x) = ", f_x
 
         end subroutine func
+
+        subroutine first_ODE(x, Y, dYdx)
+            ! This function is a first order ODE to implement the 4th order
+            ! Runge-Kutta method.
+            !
+            ! Parameters
+            ! -----------------------------
+            ! :param x:    domain of the ODE
+            ! :param Y:    function to be approximated, which only an initial 
+            !              condition is known
+            ! :param dYdx: ODE which defines the behaviour of the function Y 
+            real, intent(in) :: x, Y
+            real, intent(out) :: dYdx
+
+            dYdx = (x-Y)/2
+
+        end subroutine first_ODE
 
 end module func_mod 
