@@ -44,4 +44,25 @@ module func_mod
 
         end subroutine first_ODE
 
+        subroutine second_ODE(x, Y, f_out)
+            ! This function is a second order ODE to implement the 4th order
+            ! Runge-Kutta method.
+            !
+            ! Parameters
+            ! -----------------------------
+            ! :param x:    domain of the ODE
+            ! :param Y:    function to be approximated, which only an initial 
+            !              condition is known, has to be an column array of
+            !              1 x 2 dimension
+            ! :param f_out: ODE which defines the behaviour of the function Y,
+            !               also in vector form
+            real :: x
+            real, dimension(1,2) :: Y
+            real, dimension(1,2), intent(out) :: f_out
+
+            f_out(1,1) = Y(1,2)
+            f_out(1,2) = -Y(1,1)*Y(1,2) -3*Y(1,2) + SIN(x)
+
+        end subroutine second_ODE
+
 end module func_mod 
