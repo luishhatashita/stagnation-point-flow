@@ -3,8 +3,8 @@
 echo "Compiling..."
 mkdir -p comp
 cd comp
-gfortran -c ../src/func_mod.f90 ../src/4_runge_kutta.f90
-gfortran func_mod.o 4_runge_kutta.o
+gfortran -c ../src/func_mod.f90 ../src/ode_solver.f90 ../src/main.f90
+gfortran func_mod.o ode_solver.o main.o
 
 echo "Running the case..."
 ./a.out
