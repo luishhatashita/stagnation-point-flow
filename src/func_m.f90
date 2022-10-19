@@ -13,12 +13,12 @@ module func_m
             f_f_ode_fm = (x_f_ode_fm-y_f_ode_fm)/2
         end function f_ode
 
-        subroutine create_domain(xi_cd_fm, xf_cd_fm, n_cd_fm, a_cd_fm)
+        subroutine create_domain(xi_cd_fm, xf_cd_fm, n_cd_fm, dx_cd_fm, a_cd_fm)
             implicit none
             integer, intent(in) :: n_cd_fm
             real, intent(in) :: xi_cd_fm, xf_cd_fm
+            real, intent(out) :: dx_cd_fm
             real, dimension(:), intent(out) :: a_cd_fm
-            real :: dx_cd_fm
 
             dx_cd_fm = (xf_cd_fm-xi_cd_fm)/(n_cd_fm-1)
 
@@ -29,4 +29,6 @@ module func_m
             end do
 
         end subroutine create_domain
+
+
 end module func_m
