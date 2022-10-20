@@ -30,5 +30,4 @@ module func_m
 
         end subroutine create_domain
 
-
 end module func_m

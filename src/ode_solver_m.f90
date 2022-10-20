@@ -6,7 +6,6 @@ module ode_solver_m
 
     contains 
 
-
         function fourRK(y_4rk_osm, dx_4rk_osm)
             implicit none
             real, intent(in) :: dx_4rk_osm 
