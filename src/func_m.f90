@@ -6,19 +6,13 @@ module func_m
     public
 
     contains
-        real function f_ode(x_f_ode_fm, y_f_ode_fm) result(f_f_ode_fm)
-            implicit none
-            real, intent(in) :: x_f_ode_fm, y_f_ode_fm
-
-            f_f_ode_fm = (x_f_ode_fm-y_f_ode_fm)/2
-        end function f_ode
 
         subroutine create_domain(xi_cd_fm, xf_cd_fm, n_cd_fm, dx_cd_fm, a_cd_fm)
             implicit none
             integer, intent(in) :: n_cd_fm
-            real, intent(in) :: xi_cd_fm, xf_cd_fm
-            real, intent(out) :: dx_cd_fm
-            real, dimension(:), intent(out) :: a_cd_fm
+            double precision, intent(in) :: xi_cd_fm, xf_cd_fm
+            double precision, intent(out) :: dx_cd_fm
+            double precision, dimension(:), intent(out) :: a_cd_fm
 
             dx_cd_fm = (xf_cd_fm-xi_cd_fm)/(n_cd_fm-1)
 
