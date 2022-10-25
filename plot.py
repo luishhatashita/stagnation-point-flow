@@ -12,10 +12,10 @@ except:
     print("No EB Garamond font")
 
 def F(eta):
-    return df[df['eta'] == eta]['f']
+    return df[df['eta'] == eta]['F']
 
 def F_prime(eta):
-    return df[df['eta'] == eta]['f_prime']
+    return df[df['eta'] == eta]['F_prime']
 
 df = pd.read_csv('./data/stag_flow.csv')
 
@@ -27,11 +27,11 @@ print(df.head())
 # in terms of eta, F, F', F''
 
 fig, ax = plt.subplots()
-ax.plot(df['eta'], df['f'], label='F')
-ax.plot(df['eta'], df['f_prime'], label="F'")
-ax.plot(df['eta'], df['f_double_prime'], label='F"')
+ax.plot(df['eta'], df['F'], label='F')
+ax.plot(df['eta'], df['F_prime'], label="F'")
+ax.plot(df['eta'], df['F_double_prime'], label='F"')
 ax.legend()
-ax.set(title='Stagnation point flow similarity solution', xlabel='$\eta$')
+ax.set(title='Similarity solution', xlabel='$\eta$')
 
 fig.savefig('./data/stag_flow_similarity.png')
 
@@ -58,9 +58,9 @@ for i in range(X.shape[0]):
 
 fig2, ax2 = plt.subplots()
 ax2.streamplot(X, Y, u, v)
-ax2.set(title='Stagnation point flow', xlabel='$x$', ylabel='$y$')
+ax2.set(title='Streamlines', xlabel='$x$', ylabel='$y$')
 
-fig2.savefig('./data/stag_flow.png')
+fig2.savefig('./data/stag_flow_streamlines.png')
 
 # Ploting the vector field with this resolution did not look pleasant
 #fig3, ax3 = plt.subplots()
@@ -74,7 +74,9 @@ w_z = dv_dx - du_dy
 
 fig4, ax4 = plt.subplots()
 im4 = ax4.pcolormesh(X, Y, w_z, cmap='turbo')
-ax4.set(title='Stagnation point flow - vorticity', xlabel='$x$', ylabel='$y$')
+ax4.set(title='Vorticity', xlabel='$x$', ylabel='$y$')
 fig4.colorbar(im4, ax=ax4)
+
+fig4.savefig('./data/stag_flow_vorticity.png')
 
 plt.show()
