@@ -1,15 +1,6 @@
 import matplotlib.pyplot as plt
-import plotly.figure_factory as ff
 import pandas as pd
 import numpy as np
-
-try:
-    plt.rcParams.update({
-        "font.family": 'sans-serif',
-        "font.sans-serif": "Tahoma"
-    })
-except:
-    print("No EB Garamond font")
 
 def F(eta):
     return df[df['eta'] == eta]['F']
@@ -68,12 +59,14 @@ fig2.savefig('./data/stag_flow_streamlines.png')
 #ax3.set(title='Stagnation point flow', xlabel='$x$', ylabel='$y$')
 
 # Vorticity
-du_dy = np.gradient(u)[1]
-dv_dx = np.gradient(v)[0]
+# x, and y directions are inverted in the meshgrid for u and v.
+# hence, the invertion of du_dy and dv_dx.
+du_dy = np.gradient(u)[0]
+dv_dx = np.gradient(v)[1]
 w_z = dv_dx - du_dy
 
 fig4, ax4 = plt.subplots()
-im4 = ax4.pcolormesh(X, Y, w_z, cmap='turbo')
+im4 = ax4.pcolormesh(X, Y, w_z, cmap='RdBu_r')
 ax4.set(title='Vorticity', xlabel='$x$', ylabel='$y$')
 fig4.colorbar(im4, ax=ax4)
 

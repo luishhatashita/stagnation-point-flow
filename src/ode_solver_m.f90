@@ -37,13 +37,14 @@ module ode_solver_m
         end function fourRK
 
         function stag_flow(y_sf_fm) 
-            ! This function is a test to analyze the functionality of fortran
-            ! modules. And provided a x, returns 2x.
+            ! Stagnation-point flow similarity solution ODE generalization in
+            ! vector form. Given y, return g(y), where g(y) = dy/d\eta.
             !
             ! Parameters
             ! -----------------------------
-            ! :param x: defined by user, need to be entered as a real
-            ! :param f_x: function's returned value of x^2 + 2*x, also a real
+            ! :param y_sf_fm: defined by user, input variable of ODE function 
+            ! :param stag_flow: function's returned value of g(y), also a in
+            ! vector form
             implicit none
             double precision, dimension(3), intent(in) :: y_sf_fm
             double precision, dimension(3) :: stag_flow 
